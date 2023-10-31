@@ -19,16 +19,25 @@ namespace Hometask5._2
                 else if (str.IndexOf(searchChar) == -1)
                 {
                     Console.WriteLine($"В строке нет символа '{searchChar}'");
-                }
-                else if (str.IndexOf(searchChar) == str.LastIndexOf(searchChar))
-                {
-                    break;
+                    Console.WriteLine();
                 }
                 else
                 {
-                    string resultStr = str.Substring(str.IndexOf(searchChar) + 1, str.LastIndexOf(searchChar) - 1).Replace(searchChar, replaceChar);
-                    resultStr = str.Substring(0, str.IndexOf(searchChar) + 1) + resultStr + str.Substring(str.LastIndexOf(searchChar));
-                    Console.WriteLine(resultStr);
+                    char[] resultArray = str.ToCharArray();
+                    int firstIndexChar = Array.IndexOf(resultArray, searchChar);
+                    int lastIndexChar = Array.LastIndexOf(resultArray, searchChar);
+                    for (int i = firstIndexChar + 1; i < lastIndexChar; i++)
+                    {
+                        if (resultArray[i] == searchChar)
+                        {
+                            resultArray[i] = replaceChar;
+                        }
+                    }
+                    //Мой изначальный способ
+                    //string resultStr = str.Substring(str.IndexOf(searchChar) + 1, str.LastIndexOf(searchChar) - 1).Replace(searchChar, replaceChar);
+                    //resultStr = str.Substring(0, str.IndexOf(searchChar) + 1) + resultStr + str.Substring(str.LastIndexOf(searchChar));
+                    new string(resultArray);
+                    Console.WriteLine(resultArray);
                     break;
                 }
             }

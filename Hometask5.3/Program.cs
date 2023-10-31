@@ -7,7 +7,9 @@ namespace Hometask5._3
     {
         static void Main(string[] args)
         {
-            string alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+            string numbers = "1234567890";
+            string rusAlphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+            string engAlphabet = "abcdefghijklmnopqrstuvwxyz";
             string inputStr;
             while (true)
             {
@@ -38,16 +40,28 @@ namespace Hometask5._3
             StringBuilder encryptStr = new StringBuilder();
             for (int i = 0; i < inputStr.Length; i++)
             {
-
-                int indexAlphabet = alphabet.IndexOf(inputStr[i]);
-                if (indexAlphabet < 0)
+                int indexAlphabet;
+                if (rusAlphabet.IndexOf(inputStr[i]) != -1)
                 {
-                    encryptStr.Append(inputStr[i]);
+                    indexAlphabet = rusAlphabet.IndexOf(inputStr[i]);
+                    int encryptIndex = (rusAlphabet.Length + indexAlphabet + step) % rusAlphabet.Length;
+                    encryptStr.Append(rusAlphabet[encryptIndex]);
+                }
+                else if (numbers.IndexOf(inputStr[i]) != -1)
+                {
+                    indexAlphabet = numbers.IndexOf(inputStr[i]);
+                    int encryptIndex = (numbers.Length + indexAlphabet + step) % numbers.Length;
+                    encryptStr.Append(numbers[encryptIndex]);
+                }
+                else if (engAlphabet.IndexOf(inputStr[i]) != -1)
+                {
+                    indexAlphabet = engAlphabet.IndexOf(inputStr[i]);
+                    int encryptIndex = (engAlphabet.Length + indexAlphabet + step) % engAlphabet.Length;
+                    encryptStr.Append(engAlphabet[encryptIndex]);
                 }
                 else
                 {
-                    int encryptIndex = (alphabet.Length + indexAlphabet + step) % alphabet.Length;
-                    encryptStr.Append(alphabet[encryptIndex]);
+                    encryptStr.Append(inputStr[i]);
                 }
             }
 
