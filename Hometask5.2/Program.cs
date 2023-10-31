@@ -23,6 +23,7 @@ namespace Hometask5._2
                 }
                 else
                 {
+                    //способ с вебинара
                     char[] resultArray = str.ToCharArray();
                     int firstIndexChar = Array.IndexOf(resultArray, searchChar);
                     int lastIndexChar = Array.LastIndexOf(resultArray, searchChar);
