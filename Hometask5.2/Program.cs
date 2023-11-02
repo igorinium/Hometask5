@@ -37,8 +37,8 @@ namespace Hometask5._2
                     //Мой изначальный способ
                     //string resultStr = str.Substring(str.IndexOf(searchChar) + 1, str.LastIndexOf(searchChar) - 1).Replace(searchChar, replaceChar);
                     //resultStr = str.Substring(0, str.IndexOf(searchChar) + 1) + resultStr + str.Substring(str.LastIndexOf(searchChar));
-                    new string(resultArray);
-                    Console.WriteLine(resultArray);
+                    string resultString = new string(resultArray);
+                    Console.WriteLine(resultString);
                     break;
                 }
             }
